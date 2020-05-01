@@ -29,7 +29,6 @@ const CartProvider: React.FC = ({ children }) => {
   const [products, setProducts] = useState<Product[]>([]);
 
   useEffect(() => {
-    // TODO LOAD ITEMS FROM ASYNC STORAGE - ok?
     async function loadProducts(): Promise<void> {
       const loadedProducts = await AsyncStorage.getItem(
         '@GoMarketplace:products',
@@ -45,8 +44,6 @@ const CartProvider: React.FC = ({ children }) => {
 
   const addToCart = useCallback(
     async product => {
-      // TODO ADD A NEW ITEM TO THE CART - ok?
-
       const productFounded = products.find(p => p.id === product.id);
 
       if (productFounded) {
@@ -71,8 +68,6 @@ const CartProvider: React.FC = ({ children }) => {
 
   const increment = useCallback(
     async id => {
-      // TODO INCREMENTS A PRODUCT QUANTITY IN THE CART
-
       setProducts(
         products.map(product =>
           product.id === id
@@ -91,8 +86,6 @@ const CartProvider: React.FC = ({ children }) => {
 
   const decrement = useCallback(
     async id => {
-      // TODO DECREMENTS A PRODUCT QUANTITY IN THE CART
-
       const productFounded = products.find(p => p.id === id);
 
       if (productFounded && productFounded.quantity === 1) {
